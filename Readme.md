@@ -10,7 +10,7 @@
 ## ETL
 
 ### archivo de games:
-- extraccion de datos
+- Extraccion de datos
 - Control de nulos (eliminacion general)
 - Control de columnas (eliminacion selectiva)
 - Control de duplicados (columna "app_name")
@@ -20,12 +20,20 @@
 - Se guarda en CSV con el nombre "df_games"
 
 ### archivo de reviews:
+- Extraccion de datos
 - Control de columnas (eliminacion selectiva)
-- Desanidado de objeto tipo json
+- Desanidado de diccionario en formato json, resultado separado del dataframe original
 - Analisis de sentimiento
-- Se guarda en CSV con el nombre "df_reviews_desanidado"
+- Se guarda en CSV con el nombre "df_reviews_desanidado" uniendo el dataframe original con el dataframe desanidado
 
 ### archivo de items:
+- Extraccion de datos
 - Control de columnas (eliminacion selectiva)
 - Control de duplicados (columna "user_id")
-- Desanidado de objeto tipo json
+- Desanidado de diccionario en formato json, resultado separado del dataframe original
+- Se guarda el dataframe original sin la columna desanidada en CSV con el nombre "df_items"
+- Transformaciones en la columna "item_id" del dataframe desanidado, transformacion a tipo "int"
+- Control de columnas dataframe desanidado (eliminacion selectiva)
+- se guarda el dataframe desanidado en Parquet con compresion "SNAPPY"
+
+## EDA
