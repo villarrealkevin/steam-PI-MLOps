@@ -10,9 +10,9 @@ df_items = pd.read_csv("post_ETL/df_items.csv")
 df_reviews_desanidado = pd.read_csv("post_ETL/df_reviews_desanidado.csv")
 df_items_desanidado = pd.read_parquet("post_ETL/df_items_desanidado.parquet")
 
-k = 5
-model = NearestNeighbors(n_neighbors=k, metric='euclidean')
-model.fit(games_ml)
+#k = 5
+#model = NearestNeighbors(n_neighbors=k, metric='euclidean')
+#model.fit(games_ml)
 
 @app.get("/developer/{desarrollador}")
 def developer(desarrollador):
@@ -88,8 +88,8 @@ def developer_reviews_analysis(desarrolladora):
     resultado = {desarrolladora: {"Negative": int(negativo), "Positive": int(positivo)}}
     return resultado
 
-@app.get("/recomendacion_juego/")
-def recommend_games(id):
+#@app.get("/recomendacion_juego/")
+#def recommend_games(id):
     k = 5
     juego_filtrado = df_games[df_games["id"] == int(id)]
     indice = juego_filtrado.index
