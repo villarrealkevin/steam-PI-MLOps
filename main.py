@@ -9,6 +9,8 @@ df_reviews_desanidado = pd.read_csv("post_ETL/df_reviews_desanidado.csv")
 df_items_desanidado = pd.read_parquet("post_ETL/df_items_desanidado.parquet")
 
 k = 5
+model = NearestNeighbors(n_neighbors=k, metric='euclidean')
+model.fit(games_ml)
 
 app = FastAPI()
 
@@ -89,8 +91,6 @@ def developer_reviews_analysis(desarrolladora):
 @app.get("/recomendacion_juego/")
 def recommend_games(id):
     k = 5
-    model = NearestNeighbors(n_neighbors=k, metric='euclidean')
-    model.fit(games_ml)
     juego_filtrado = df_games[df_games["id"] == int(id)]
     indice = juego_filtrado.index
     game_ml_input = games_ml.loc[indice].values.reshape(1, -1)
