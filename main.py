@@ -16,7 +16,7 @@ model.fit(games_ml)
 
 @app.get("/")
 
-@app.get("/developer/{desarrollador}")
+@app.get("/developer/")
 def developer(desarrollador):
     desarrollador_sin_comillas = desarrollador.replace('"', "")
     df_games_filtrado = df_games[df_games["developer"].str.replace('"', '') == desarrollador_sin_comillas]
