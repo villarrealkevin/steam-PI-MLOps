@@ -47,3 +47,5 @@ Se eliminan todas las columnas excepto las columnas generadas por la codificacio
 
 ### Tambien se realiza la visualizacion de las correlaciones entre los distintos generos, dandodos esto como resultado:
 ![Alt text](image-1.png)
+
+### El sistema de recomendacion utiliza el algoritmo "K-Nearest Neighbors"
