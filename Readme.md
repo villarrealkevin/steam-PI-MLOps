@@ -37,3 +37,13 @@
 - se guarda el dataframe desanidado en Parquet con compresion "SNAPPY"
 
 ## EDA
+Se nos solicita la creacion de un sistema de recomendacion item-item, se realiza el ingreso del id de un item y se nos devuelen 5 juegos de caracter similar al ingresado, para conseguir esto tome las siguientes decisiones:
+
+- Utilizacion del dataframe "df_games" luego de su ETL
+- Utilizacion de la columna "genres" de dicho dataframe:
+Se separan todos sus generos y se realiza una codificacion one-hot de forma manual
+Se eliminan todas las columnas excepto las columnas generadas por la codificacion antes mencionada
+- Se guarda el dataframe resultante en un CSV con el nombre "df_games_ml", haciendo referencia a que sera utilizado por el modelo de machine learning
+
+### Tambien se realiza la visualizacion de las correlaciones entre los distintos generos, dandodos esto como resultado:
+![Alt text](image-1.png)
