@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from sklearn.neighbors import NearestNeighbors
 import pandas as pd
 
+app = FastAPI()
+
 df_games = pd.read_csv("post_ETL/df_games.csv")
 games_ml = pd.read_csv("post_ETL/df_games_ml.csv")
 df_items = pd.read_csv("post_ETL/df_items.csv")
@@ -11,8 +13,6 @@ df_items_desanidado = pd.read_parquet("post_ETL/df_items_desanidado.parquet")
 k = 5
 model = NearestNeighbors(n_neighbors=k, metric='euclidean')
 model.fit(games_ml)
-
-app = FastAPI()
 
 @app.get("/developer/{desarrollador}")
 def developer(desarrollador):
