@@ -18,3 +18,14 @@
 - Transformaciones en la columna "price", transformacion a tipo "float" en caso de ser posible, en caso de que no sea posible se asigna el valor 0
 - Transformaciones en la columna "id", transformacion a tipo "int"
 - Se guarda en CSV con el nombre "df_games"
+
+### archivo de reviews:
+- Control de columnas (eliminacion selectiva)
+- Desanidado de objeto tipo json
+- Analisis de sentimiento
+- Se guarda en CSV con el nombre "df_reviews_desanidado"
+
+### archivo de items:
+- Control de columnas (eliminacion selectiva)
+- Control de duplicados (columna "user_id")
+- Desanidado de objeto tipo json
