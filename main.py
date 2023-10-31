@@ -8,7 +8,7 @@ df_games = pd.read_csv("post_ETL/df_games.csv")
 games_ml = pd.read_csv("post_ETL/df_games_ml.csv")
 df_items = pd.read_csv("post_ETL/df_items.csv")
 df_reviews_desanidado = pd.read_csv("post_ETL/df_reviews_desanidado.csv")
-#df_items_desanidado = pd.read_parquet("post_ETL/df_items_desanidado.parquet")
+df_items_desanidado = pd.read_parquet("post_ETL/df_items_desanidado.parquet")
 
 k = 5
 model = NearestNeighbors(n_neighbors=k, metric='euclidean')
@@ -28,8 +28,8 @@ def developer(desarrollador):
         resultados.append({"Año": str(year), "Cantidad de Items": count, "Contenido Free": "{}%".format(porcentaje_gratuitos)})
     return resultados
 
-#@app.get("/userdata/{user_id}")
-#def userdata(user_id):
+@app.get("/userdata/{user_id}")
+def userdata(user_id):
     cantidad = df_items["items_count"][df_items["user_id"] == user_id]
     reviews_filtrado = df_reviews_desanidado[df_reviews_desanidado["user_id"] == user_id]
     conteo_total = len(reviews_filtrado)
@@ -49,8 +49,8 @@ def developer(desarrollador):
     resultado.append({"items": cantidad.tolist(), "% de recomendacion": "{}%".format(porcentaje_recommend), "dinero gastado": "{:.2f}".format(dinero_gastado)})
     return resultado
 
-#@app.get("/UserForGenre/{genero}")
-#def UserForGenre(genero):
+@app.get("/UserForGenre/{genero}")
+def UserForGenre(genero):
     juegos = df_games[df_games["genres"].str.contains(genero)]["id"]
     games_filtrado = df_games[df_games["genres"].str.contains(genero)]
     items_filtrado = df_items_desanidado[df_items_desanidado["item_id"].isin(juegos)]
