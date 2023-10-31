@@ -14,8 +14,6 @@ k = 5
 model = NearestNeighbors(n_neighbors=k, metric='euclidean')
 model.fit(games_ml)
 
-@app.get("/")
-
 @app.get("/developer/")
 def developer(desarrollador):
     desarrollador_sin_comillas = desarrollador.replace('"', "")
